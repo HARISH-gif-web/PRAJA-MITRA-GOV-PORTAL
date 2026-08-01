@@ -299,7 +299,8 @@ app.post('/api/auth/authority', (req, res) => {
   else if (rawDept.includes('health') || rawDept.includes('med') || rawDept.includes('hospital') || rawDept.includes('sanitation')) deptKey = 'health';
   else if (passkeys[rawDept]) deptKey = rawDept;
 
-  const expectedPasscode = passkeys[deptKey] || passkeys['others'];
+  const dbPasskeys = (db.settings && db.settings.passkeys) || {};
+  const expectedPasscode = dbPasskeys[deptKey] || passkeys[deptKey] || dbPasskeys['others'] || passkeys['others'];
 
   if (passcode.trim() !== expectedPasscode) {
     return res.status(401).json({ error: `Incorrect pass key for ${department} department! Please enter the valid authority pass key.` });
