@@ -72,53 +72,6 @@
               <span class="sidebar-item-icon">📋</span>
               <span data-translate="card_my">My Complaints</span>
             </li>
-            <li class="sidebar-item" id="menu-authority" onclick="switchTab('authority')" style="display:none; border-top:1px solid #e2e8f0; margin-top:10px; padding-top:10px;">
-              <span class="sidebar-item-icon">🛡️</span>
-              <span>Authority Panel</span>
-            </li>
-          </ul>
-
-          <ul class="sidebar-menu" id="authority-sidebar-menu" style="display:none;">
-            <li class="sidebar-item active" id="auth-menu-dashboard" onclick="switchAuthSubTab('dashboard')">
-              <span class="sidebar-item-icon">📊</span>
-              <span>Dashboard</span>
-            </li>
-            <li class="sidebar-item" id="auth-menu-analytics" onclick="switchAuthSubTab('analytics')">
-              <span class="sidebar-item-icon">📈</span>
-              <span>Analytics</span>
-            </li>
-            <li class="sidebar-item" id="auth-menu-departments" onclick="switchAuthSubTab('departments')">
-              <span class="sidebar-item-icon">🏢</span>
-              <span>Departments</span>
-            </li>
-            <li class="sidebar-item" id="auth-menu-users" onclick="switchAuthSubTab('users')">
-              <span class="sidebar-item-icon">👥</span>
-              <span>Users</span>
-            </li>
-            <li class="sidebar-item" id="auth-menu-complaints" onclick="switchAuthSubTab('complaints')">
-              <span class="sidebar-item-icon">📋</span>
-              <span>Complaints</span>
-            </li>
-            <li class="sidebar-item" id="auth-menu-reports" onclick="switchAuthSubTab('reports')">
-              <span class="sidebar-item-icon">📥</span>
-              <span>Reports</span>
-            </li>
-            <li class="sidebar-item" id="auth-menu-notifications" onclick="switchAuthSubTab('notifications')">
-              <span class="sidebar-item-icon">🔔</span>
-              <span>Notifications Center</span>
-            </li>
-            <li class="sidebar-item" id="auth-menu-settings" onclick="switchAuthSubTab('settings')">
-              <span class="sidebar-item-icon">⚙️</span>
-              <span>Settings</span>
-            </li>
-            <li class="sidebar-item" onclick="switchTab('track')" style="border-top:1px solid #e2e8f0; margin-top:10px; padding-top:10px;">
-              <span class="sidebar-item-icon">📍</span>
-              <span>Citizen View</span>
-            </li>
-            <li class="sidebar-item" onclick="userLogout()" style="color:#ef4444;">
-              <span class="sidebar-item-icon">↩️</span>
-              <span>Logout</span>
-            </li>
           </ul>
         </aside>
 
@@ -202,112 +155,6 @@
             </div>
           </div>
 
-          <!-- SECTION 3: AUTHORITY PANEL -->
-          <div class="dashboard-section" id="sec-authority" style="padding: 0; background: transparent; border: none; box-shadow: none;">
-            
-            <!-- SUB-TAB 1: DASHBOARD -->
-            <div id="auth-tab-dashboard" class="auth-sub-tab active"></div>
-
-            <!-- SUB-TAB 1.5: ANALYTICS -->
-            <div id="auth-tab-analytics" class="auth-sub-tab"></div>
-
-            <!-- SUB-TAB 2: DEPARTMENTS LIST -->
-            <div id="auth-tab-departments" class="auth-sub-tab"></div>
-
-            <!-- SUB-TAB 3: ADD NEW DEPARTMENT FORM -->
-            <div id="auth-tab-add-dept" class="auth-sub-tab">
-              <div style="margin-bottom: 24px;">
-                <h2 style="margin: 0; font-size: 24px; font-weight: 800; color: #0f172a;">Add New Department</h2>
-                <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">Create a new department in the system</p>
-              </div>
-
-              <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px; box-shadow: 0 4px 12px rgba(15,23,42,0.02); max-width: 650px;">
-                <form onsubmit="submitNewDepartment(event)">
-                  <div class="form-group" style="margin-bottom: 18px;">
-                    <label style="font-weight:700; font-size:12px; color:#475569; margin-bottom:6px; display:block;">Department Name *</label>
-                    <input type="text" id="add-dept-name" class="form-control" placeholder="Enter department name" required style="padding:10px;">
-                  </div>
-                  <div class="form-group" style="margin-bottom: 18px;">
-                    <label style="font-weight:700; font-size:12px; color:#475569; margin-bottom:6px; display:block;">Department Type *</label>
-                    <select id="add-dept-type" class="form-control" required style="padding:10px; background:#fff; height:auto; border:1px solid #cbd5e1; border-radius:6px; outline:none; width:100%;">
-                      <option value="Food">Food</option>
-                      <option value="Civic">Civic Infrastructure</option>
-                      <option value="Education">Education</option>
-                      <option value="Health">Health</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                  <div class="form-group" style="margin-bottom: 18px;">
-                    <label style="font-weight:700; font-size:12px; color:#475569; margin-bottom:6px; display:block;">Contact Email *</label>
-                    <input type="email" id="add-dept-email" class="form-control" placeholder="Enter contact email" required style="padding:10px;">
-                  </div>
-                  <div class="form-group" style="margin-bottom: 18px;">
-                    <label style="font-weight:700; font-size:12px; color:#475569; margin-bottom:6px; display:block;">Contact Phone</label>
-                    <input type="text" id="add-dept-phone" class="form-control" placeholder="Enter contact phone" style="padding:10px;">
-                  </div>
-                  <div class="form-group" style="margin-bottom: 18px;">
-                    <label style="font-weight:700; font-size:12px; color:#475569; margin-bottom:6px; display:block;">Description</label>
-                    <textarea id="add-dept-desc" class="form-control" placeholder="Enter department description" style="padding:10px; min-height: 80px; resize: vertical; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; width: 100%;"></textarea>
-                  </div>
-                  <div class="form-group" style="margin-bottom: 24px;">
-                    <label style="font-weight:700; font-size:12px; color:#475569; margin-bottom:6px; display:block;">Status *</label>
-                    <select id="add-dept-status" class="form-control" required style="padding:10px; background:#fff; height:auto; border:1px solid #cbd5e1; border-radius:6px; outline:none; width:100%;">
-                      <option value="Active">Active</option>
-                      <option value="Inactive">Inactive</option>
-                    </select>
-                  </div>
-                  <div style="display: flex; gap: 12px;">
-                    <button type="submit" class="btn btn-primary" style="margin:0; background:#16a34a; border-color:#16a34a; padding: 10px 20px;">Save Department</button>
-                    <button type="button" class="btn btn-secondary" onclick="switchAuthSubTab('departments')" style="margin:0; padding: 10px 20px; border-color:#cbd5e1; color:#475569;">Cancel</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-            <!-- SUB-TAB 4: USERS LIST -->
-            <div id="auth-tab-users" class="auth-sub-tab"></div>
-
-            <!-- SUB-TAB 5: COMPLAINTS TAB -->
-            <div id="auth-tab-complaints" class="auth-sub-tab">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
-                <div>
-                  <h2 style="margin: 0; font-size: 24px; font-weight: 800; color: #0f172a;">Category Complaints</h2>
-                  <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">Monitor and change complaint progression</p>
-                </div>
-                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                  <div style="display: flex; gap: 4px; background: #f1f5f9; padding: 4px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                    <button type="button" id="btn-auth-filter-all" class="filter-pill active" onclick="filterAuthorityComplaints('all', this)" style="padding: 6px 12px; font-size: 12px; font-weight: 700; cursor: pointer;">📋 Registered</button>
-                    <button type="button" id="btn-auth-filter-inv" class="filter-pill" onclick="filterAuthorityComplaints('investigation', this)" style="padding: 6px 12px; font-size: 12px; font-weight: 700; cursor: pointer;">⚙️ Under Investigation</button>
-                    <button type="button" id="btn-auth-filter-res" class="filter-pill" onclick="filterAuthorityComplaints('resolved', this)" style="padding: 6px 12px; font-size: 12px; font-weight: 700; cursor: pointer;">✅ Resolved</button>
-                  </div>
-                  <button type="button" class="btn btn-secondary" id="btn-toggle-view-scope" onclick="toggleAuthorityViewScope()" style="border: 1px solid #1f7a3f; color: #1f7a3f; background: #fff; padding: 8px 16px; font-weight:700; cursor:pointer; border-radius:6px; margin:0;">
-                    🌐 View All Problems
-                  </button>
-                </div>
-              </div>
-
-              <div class="complaints-list" id="authority-complaints-list" style="display: flex; flex-direction: column; gap: 20px;">
-                <!-- Loaded dynamically -->
-              </div>
-            </div>
-
-            <!-- SUB-TAB 6: REPORTS -->
-            <div id="auth-tab-reports" class="auth-sub-tab"></div>
-
-            <!-- SUB-TAB 7: NOTIFICATIONS -->
-            <div id="auth-tab-notifications" class="auth-sub-tab"></div>
-
-            <!-- SUB-TAB 8: SETTINGS -->
-            <div id="auth-tab-settings" class="auth-sub-tab"></div>
-
-            <!-- SUB-TAB 9: LOGS -->
-            <div id="auth-tab-logs" class="auth-sub-tab"></div>
-
-            <!-- SUB-TAB 10: PROFILE -->
-            <div id="auth-tab-profile" class="auth-sub-tab"></div>
-
-          </div>
-
           </div>
 
         </section>
@@ -319,7 +166,6 @@
     <script src="translate.js"></script>
     <script src="accessibility.js"></script>
     <script src="modules/LoginForm.js"></script>
-    <script src="modules/AuthorityDashboard.js"></script>
     <script src="modules/Departments.js"></script>
     <script src="modules/Users.js"></script>
     <script src="modules/Reports.js"></script>
@@ -344,21 +190,12 @@
         const ticketId = urlParams.get('id');
         const view = urlParams.get('view');
         
-        // Show Authority Panel in sidebar if logged-in user is an authority
-        const isAuth = localStorage.getItem('prajamitra_is_authority') === 'true';
-        if (isAuth) {
-          const authMenuItem = document.getElementById('menu-authority');
-          if (authMenuItem) authMenuItem.style.display = 'block';
-        }
-
         if (view === 'my-complaints' || view === 'my') {
           switchTab('my');
         } else if (ticketId) {
           switchTab('track');
           document.getElementById('track-input').value = ticketId;
           trackComplaint(ticketId);
-        } else if (isAuth && (!view || view === 'authority')) {
-          switchTab('authority');
         } else {
           switchTab('track');
         }
@@ -371,28 +208,12 @@
         const citizenSidebar = document.getElementById('citizen-sidebar-menu');
         const authoritySidebar = document.getElementById('authority-sidebar-menu');
         
-        if (tabName === 'authority') {
-          const isAuth = localStorage.getItem('prajamitra_is_authority') === 'true';
-          if (!isAuth) {
-            startAdminLoginIntroSequence();
-            return;
-          }
-          if (citizenSidebar) citizenSidebar.style.display = 'none';
-          if (authoritySidebar) authoritySidebar.style.display = 'block';
-          switchAuthSubTab('dashboard');
-        } else {
-          if (citizenSidebar) citizenSidebar.style.display = 'block';
-          if (authoritySidebar) authoritySidebar.style.display = 'none';
-          
-          // Update menu active
-          document.getElementById('menu-track').className = tabName === 'track' ? 'sidebar-item active' : 'sidebar-item';
-          document.getElementById('menu-my').className = tabName === 'my' ? 'sidebar-item active' : 'sidebar-item';
-          
-          const authMenuItem = document.getElementById('menu-authority');
-          if (authMenuItem) {
-            authMenuItem.className = tabName === 'authority' ? 'sidebar-item active' : 'sidebar-item';
-          }
-        }
+        if (citizenSidebar) citizenSidebar.style.display = 'block';
+        if (authoritySidebar) authoritySidebar.style.display = 'none';
+        
+        // Update menu active
+        document.getElementById('menu-track').className = tabName === 'track' ? 'sidebar-item active' : 'sidebar-item';
+        document.getElementById('menu-my').className = tabName === 'my' ? 'sidebar-item active' : 'sidebar-item';
         
         // Update section active
         document.getElementById('sec-track').className = tabName === 'track' ? 'dashboard-section active' : 'dashboard-section';
@@ -525,9 +346,7 @@
         });
 
         // Trigger dynamic module render
-        if (subTabName === 'dashboard') {
-          AuthorityDashboard.render('auth-tab-dashboard');
-        } else if (subTabName === 'analytics') {
+        if (subTabName === 'analytics') {
           Analytics.render('auth-tab-analytics');
         } else if (subTabName === 'departments') {
           Departments.render('auth-tab-departments');

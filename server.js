@@ -22,7 +22,6 @@ app.use(express.static(__dirname));
 // Ensure required directories exist
 const DB_FILE = path.join(__dirname, 'database.json');
 const UPLOADS_DIR = path.join(__dirname, 'uploads');
-const ADMIN_DIST = path.join(__dirname, 'admin-dist');
 
 if (!fs.existsSync(UPLOADS_DIR)) {
   fs.mkdirSync(UPLOADS_DIR, { recursive: true });
@@ -30,11 +29,6 @@ if (!fs.existsSync(UPLOADS_DIR)) {
 
 // Serve uploads
 app.use('/uploads', express.static(UPLOADS_DIR));
-
-// Serve React admin app if built
-if (fs.existsSync(ADMIN_DIST)) {
-  app.use('/admin', express.static(ADMIN_DIST));
-}
 
 // In-memory sessions store (Token -> User Email)
 const ACTIVE_SESSIONS = new Map();
@@ -1106,12 +1100,6 @@ app.post('/api/notifications/broadcast', (req, res) => {
 app.get('*', (req, res, next) => {
   if (req.path.startsWith('/api/')) {
     return next();
-  }
-  if (req.path.startsWith('/admin')) {
-    const adminIndex = path.join(ADMIN_DIST, 'index.html');
-    if (fs.existsSync(adminIndex)) {
-      return res.sendFile(adminIndex);
-    }
   }
   const rootIndex = path.join(__dirname, 'index.html');
   if (fs.existsSync(rootIndex)) {

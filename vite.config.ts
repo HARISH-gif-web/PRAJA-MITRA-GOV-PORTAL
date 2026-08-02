@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  root: 'src/admin',
+  root: '.',
   build: {
-    outDir: '../../admin-dist',
+    outDir: 'dist',
     emptyOutDir: true,
   },
   server: {
