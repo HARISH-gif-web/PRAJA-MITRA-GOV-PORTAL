@@ -158,11 +158,11 @@ function readDB() {
       ],
       settings: {
         passkeys: {
-          food: '101',
-          education: '102',
-          civic: '103',
-          health: '104',
-          others: '100'
+          food: '9676292195',
+          education: '7671000584',
+          civic: '6301316591',
+          health: '8886803818',
+          others: '7671000583'
         }
       }
     };
@@ -175,7 +175,7 @@ function readDB() {
     if (!data.complaints) data.complaints = [];
     if (!data.departments) data.departments = [];
     if (!data.officers) data.officers = [];
-    if (!data.settings) data.settings = { passkeys: { food: '101', education: '102', civic: '103', health: '104', others: '100' } };
+    if (!data.settings) data.settings = { passkeys: { food: '9676292195', education: '7671000584', civic: '6301316591', health: '8886803818', others: '7671000583' } };
     return data;
   } catch (e) {
     return { users: [], complaints: [], departments: [], officers: [], settings: {} };
@@ -285,9 +285,9 @@ app.post('/api/auth/authority', (req, res) => {
   const db = readDB();
   const passkeys = {
     food: '9676292195',
-    education: '6301316591',
+    education: '7671000584',
     health: '8886803818',
-    civic: '7671000584',
+    civic: '6301316591',
     others: '7671000583'
   };
 
